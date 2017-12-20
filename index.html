@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Awesome OIT test prepearing</title>
@@ -14,15 +14,24 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script>var app = angular.module("myApp", []); const QUESTIONS_NUM = 3</script>
+    <script src="Question.js"></script>
+    <script src="RandQuestionsVM.js"></script>
+    <script src="QuestionsModel.js"></script>
+    <script src="LogInModel.js"></script>
+    <script src="ResultVM.js"></script>
+    <script src="controller.js"></script>
 </head>
 <body style="
     height: 100vh;
     display:  flex;
     justify-content:  center;
     align-content:  center;
-">
+" ng-controller="controller as vm">
     <div class="outer">
-        <div class = "center-field text-center">
+        <div ng-if="vm.state == 'start'" class = "center-field text-center">
             <div class="prepearing">
                 <h2>Підготовка до ЗНО</h2>
             </div>
@@ -32,9 +41,20 @@
             <br/>
             <input type="text" class="name-input form-control" placeholder="Прізвище" style="width: 90%">
             <br/>
-            <button class="start-btn btn-primary btn-lg">Розпочати тестування</button>
+            <button class="start-btn btn-primary btn-lg" ng-click="vm.start()">Розпочати тестування</button>
             <br/>
             <br/>
+        </div>
+        <div ng-if="vm.state == 'tests'" class = "center-field text-center">
+            <div class="question">
+                <h4>Завдання {{vm.randQuestionsVM.i + 1}}/{{vm.QUESTIONS_NUM}}: {{vm.randQuestionsVM.currentQuestion.text}}</h4>
+            </div>
+            <div class="radio" ng-repeat="variant in vm.randQuestionsVM.currentQuestion.variants">
+                <label><input type="radio" name="answer">{{variant}}</label>
+            </div>
+
+            <button ng-click="vm.randQuestionsVM.previous()" class="btn-primary btn-md" style="float: left"><- back</button>
+            <button ng-click="vm.randQuestionsVM.next()" class="btn-primary btn-md" style="float: right">next -></button>
         </div>
     </div>
 </body>
