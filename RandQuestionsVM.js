@@ -7,10 +7,12 @@ function RandQuestionsVM(questions) {
     this.next = function () {
         console.log('next');
         this.i++;
-        if (this.i > QUESTIONS_NUM - 2)
-            this.i = QUESTIONS_NUM - 2;
+        if (this.i > QUESTIONS_NUM - 1)
+            this.i = QUESTIONS_NUM - 1;
 
         this.currentQuestion = this.questions[this.i];
+
+        console.log(this);
     };
 
     this.previous = function () {
@@ -19,5 +21,7 @@ function RandQuestionsVM(questions) {
             this.i = 0;
 
         this.currentQuestion = this.questions[this.i];
+
+        console.log(this);
     };
 }

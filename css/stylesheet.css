@@ -34,3 +34,9 @@
     margin: auto;
     text-align: center;
 }
+
+.congrats{
+    border: 3px solid #7700ff;
+    width: 40%;
+    margin: auto;
+}
