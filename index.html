@@ -47,7 +47,9 @@
         </div>
         <div ng-if="vm.state == 'tests'" class = "center-field text-center">
             <div class="question">
-                <h4>Завдання {{vm.randQuestionsVM.i + 1}}/{{vm.questionsNum}}: {{vm.randQuestionsVM.currentQuestion.text}}</h4>
+                <h4>Завдання {{vm.randQuestionsVM.i + 1}}</h4><!--/{{vm.questionsNum}}: {{vm.randQuestionsVM.currentQuestion.text}}</h4>-->
+                <img ng-src="{{vm.randQuestionsVM.currentQuestion.text}}"></img>
+                <br/>
             </div>
             <div class="radio" ng-repeat="variant in vm.randQuestionsVM.currentQuestion.variants">
                 <label><input type="radio"
