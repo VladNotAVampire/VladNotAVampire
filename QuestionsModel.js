@@ -8,7 +8,7 @@ function QuestionsModel() {
         new Question('images/4.png', abcde, "Б"),
         new Question('images/5.png', abcde, "Г"),
         new Question('images/6.png', abcde, "Г"),
-        new Question('images/7.png', abcde, "Ф"),
+        new Question('images/7.png', abcde, "А"),
         new Question('images/8.png', abcde, "В"),
         new Question('images/9.png', abcde, "Г"),
         new Question('images/10.png', abcde, "Д"),

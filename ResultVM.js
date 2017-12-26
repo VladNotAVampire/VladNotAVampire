@@ -7,6 +7,10 @@ function ResultVM(LogInModel, QuestionsVM) {
 
     for(var i = 0; i < QuestionsVM.questions.length; i++){
         this.correctAnswersNumber += QuestionsVM.questions[i].isAnswerCorrect(QuestionsVM.questions[i].answer) ? 1 : 0;
+
+        if (!QuestionsVM.questions[i].isAnswerCorrect(QuestionsVM.questions[i].answer))
+            console.log(QuestionsVM.questions[i]);
+
         QuestionsVM.questions[i].answer = undefined;
     }
 
