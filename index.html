@@ -36,7 +36,7 @@
             <div class="prepearing">
                 <h2>Підготовка до ЗНО</h2>
             </div>
-            <h3>Введіть свої дані і натиснить кнопку "Розпочати тестування"</h3>
+            <h3>Введіть свої дані і натисніть кнопку "Розпочати тестування"</h3>
             <br/>
             <input type="text" ng-model="vm.logInModel.name" class="name-input form-control" placeholder="Ім'я" style="width: 90%">
             <br/>
@@ -49,7 +49,7 @@
         <div ng-if="vm.state == 'tests'" class = "center-field text-center">
             <div class="question">
                 <h4>Завдання {{vm.randQuestionsVM.i + 1}}/{{vm.questionsNum}}</h4><!--/{{vm.questionsNum}}: {{vm.randQuestionsVM.currentQuestion.text}}</h4>-->
-                    <img ng-src="{{vm.randQuestionsVM.currentQuestion.text}}" style="max-width: 100%"></img>
+                    <img ng-src="{{vm.randQuestionsVM.currentQuestion.text}}" style="max-width: 98%"></img>
                 <br/>
             </div>
             <br/>
