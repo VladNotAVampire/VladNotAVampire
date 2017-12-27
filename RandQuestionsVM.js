@@ -1,8 +1,31 @@
 function RandQuestionsVM(questions) {
-    this.questions = questions;
+    this.questions = [];// = questions;
 
     this.i = 0;
-    this.currentQuestion = questions[this.i];
+
+    var randIndexes = [];
+
+    for(var i = 0; i < 20; i++){
+        var index;
+
+        do{
+            index = Math.floor(Math.random() * questions.length);
+        }
+        while(randIndexes.filter(function (t) {
+            return t == index;
+        }).length != 0);
+
+        randIndexes.push(index);
+        this.questions.push(questions[index]);
+
+        if (questions[index] == undefined){
+            console.log(index + " wrong");
+        }
+    }
+
+    this.currentQuestion = this.questions[this.i];
+
+
 
     this.next = function () {
         console.log('next');

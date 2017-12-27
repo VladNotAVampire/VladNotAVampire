@@ -31,7 +31,7 @@
     align-content:  center;
 " ng-controller="controller as vm">
     <div class="outer">
-        <div ng-if="vm.state == 'start'" class = "center-field text-center">
+        <div ng-if="vm.state == 'start'" class = "center-field text-center panel-primary">
             <div class="prepearing">
                 <h2>Підготовка до ЗНО</h2>
             </div>
@@ -47,19 +47,22 @@
         </div>
         <div ng-if="vm.state == 'tests'" class = "center-field text-center">
             <div class="question">
-                <h4>Завдання {{vm.randQuestionsVM.i + 1}}</h4><!--/{{vm.questionsNum}}: {{vm.randQuestionsVM.currentQuestion.text}}</h4>-->
+                <h4>Завдання {{vm.randQuestionsVM.i + 1}}/{{vm.questionsNum}}</h4><!--/{{vm.questionsNum}}: {{vm.randQuestionsVM.currentQuestion.text}}</h4>-->
                     <img ng-src="{{vm.randQuestionsVM.currentQuestion.text}}"></img>
                 <br/>
             </div>
-            <div class="radio" ng-repeat="variant in vm.randQuestionsVM.currentQuestion.variants">
-                <label><input type="radio"
-                              name="vm.randQuestionsVM.i"
-                              ng-model="vm.randQuestionsVM.currentQuestion.answer"
-                              ng-value="variant">{{variant}}</label>
-            </div>
+            <label ng-repeat="variant in vm.randQuestionsVM.currentQuestion.variants">
+                <input
+                    type="radio"
+                    class="radio-inline"
+                    name="vm.randQuestionsVM.i"
+                    ng-model="vm.randQuestionsVM.currentQuestion.answer"
+                    ng-value="variant"/>{{variant}}&emsp;
+            </label>
+            <br/>
 
-            <button ng-if="vm.randQuestionsVM.i != 0" ng-click="vm.randQuestionsVM.previous()" class="btn-primary btn-lg" style="float: left"><- back</button>
-            <button ng-if="vm.randQuestionsVM.i + 1 != vm.questionsNum" ng-click="vm.randQuestionsVM.next()" class="btn-primary btn-lg" style="float: right">next -></button>
+            <button ng-if="vm.randQuestionsVM.i != 0" ng-click="vm.randQuestionsVM.previous()" class="btn-primary btn-lg" style="float: left">Попереднє запитання</button>
+            <button ng-if="vm.randQuestionsVM.i + 1 != vm.questionsNum" ng-click="vm.randQuestionsVM.next()" class="btn-primary btn-lg" style="float: right">Наступне запитання</button>
             <br/>
             <button ng-if="vm.randQuestionsVM.i + 1 == vm.questionsNum" ng-click="vm.finish()" class="btn-primary btn-lg">Завершити тестування</button>
         </div>
