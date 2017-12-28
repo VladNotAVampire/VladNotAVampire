@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
@@ -63,8 +63,8 @@
             </label>
             <br/>
 
-            <button ng-if="vm.randQuestionsVM.i != 0" ng-click="vm.randQuestionsVM.previous()" class="btn-primary btn-md" style="float: left">Попереднє запитання</button>
-            <button ng-if="vm.randQuestionsVM.i + 1 != vm.questionsNum" ng-click="vm.randQuestionsVM.next()" class="btn-primary btn-md" style="float: right">Наступне запитання</button>
+            <button ng-if="vm.randQuestionsVM.i != 0" ng-click="vm.randQuestionsVM.previous()" class="btn-primary btn-sm" style="float: left">Попереднє запитання</button>
+            <button ng-if="vm.randQuestionsVM.i + 1 != vm.questionsNum" ng-click="vm.randQuestionsVM.next()" class="btn-primary btn-sm" style="float: right">Наступне запитання</button>
             <br/>
             <br/>
             <button ng-if="vm.randQuestionsVM.i + 1 == vm.questionsNum" ng-click="vm.finish()" class="btn-primary btn-lg">Завершити тестування</button>
