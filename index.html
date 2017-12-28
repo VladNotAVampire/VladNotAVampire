@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="icon.png">
     <title>Awesome OIT test prepearing</title>
 
-    <link rel="stylesheet" href="css/stylesheet.css"/>
+    <link rel="stylesheet" href="css/stylesheet.css" />
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -25,58 +26,67 @@
     <script src="ResultVM.js"></script>
     <script src="controller.js"></script>
 </head>
-<body style="
+<!--style="
     height: 100vh;
     display:  flex;
     justify-content:  center;
     align-content:  center;
-" ng-controller="controller as vm">
-    <div class="outer">
-        <div ng-if="vm.state == 'start'" class = "center-field text-center panel-primary">
-            <div class="prepearing">
-                <h2>Підготовка до ЗНО</h2>
-            </div>
-            <h3>Введіть свої дані і натисніть кнопку "Розпочати тестування"</h3>
-            <br/>
-            <input type="text" ng-model="vm.logInModel.name" class="name-input form-control" placeholder="Ім'я" style="width: 90%">
-            <br/>
-            <input type="text" ng-model="vm.logInModel.secondName" class="name-input form-control" placeholder="Прізвище" style="width: 90%">
-            <br/>
-            <button class="start-btn btn-primary btn-lg" ng-click="vm.start()">Розпочати тестування</button>
-            <br/>
-            <br/>
-        </div>
-        <div ng-if="vm.state == 'tests'" class = "center-field text-center">
-            <div class="question">
-                <h4>Завдання {{vm.randQuestionsVM.i + 1}}/{{vm.questionsNum}}</h4><!--/{{vm.questionsNum}}: {{vm.randQuestionsVM.currentQuestion.text}}</h4>-->
-                    <img ng-src="{{vm.randQuestionsVM.currentQuestion.text}}" style="max-width: 98%"></img>
-                <br/>
-            </div>
-            <br/>
-            <label ng-repeat="variant in vm.randQuestionsVM.currentQuestion.variants">
-                <input
-                    type="radio"
-                    class="radio-inline"
-                    name="vm.randQuestionsVM.i"
-                    ng-model="vm.randQuestionsVM.currentQuestion.answer"
-                    ng-value="variant"/>{{variant}}&emsp;
-            </label>
-            <br/>
+"-->
 
-            <button ng-if="vm.randQuestionsVM.i != 0" ng-click="vm.randQuestionsVM.previous()" class="btn-primary btn-sm" style="float: left">Попереднє запитання</button>
-            <button ng-if="vm.randQuestionsVM.i + 1 != vm.questionsNum" ng-click="vm.randQuestionsVM.next()" class="btn-primary btn-sm" style="float: right">Наступне запитання</button>
-            <br/>
-            <br/>
-            <button ng-if="vm.randQuestionsVM.i + 1 == vm.questionsNum" ng-click="vm.finish()" class="btn-primary btn-lg">Завершити тестування</button>
-        </div>
-        <div ng-if="vm.state == 'result'" class = "center-field text-center">
-            <div class="congrats">
-                <h3>Вітаємо із завершенням тесту, {{vm.resultVM.name}} {{vm.resultVM.secondName}}</h3>
+<body ng-controller="controller as vm">
+    <a ng-if="vm.state == 'start'" href="/links.html" style="height: 50px; width:50px; float:right">
+        <img src="icon.png" style="height: 50px; width:50px;" />
+    </a>
+    <a ng-if="vm.state == 'start'" href="/instruction.html" class="btn-lg btn-info" style="height: 45px; float:left">
+        <span class="glyphicon glyphicon-question-sign"></span>
+    </a>
+    <div class="body">
+        <div class="outer">
+            <div ng-if="vm.state == 'start'" class="center-field text-center panel-primary">
+                <div class="prepearing">
+                    <h2>Підготовка до ЗНО</h2>
+                </div>
+                <h3>Введіть свої дані і натисніть кнопку "Розпочати тестування"</h3>
+                <br />
+                <input type="text" ng-model="vm.logInModel.name" class="name-input form-control" placeholder="Ім'я" style="width: 90%">
+                <br />
+                <input type="text" ng-model="vm.logInModel.secondName" class="name-input form-control" placeholder="Прізвище" style="width: 90%">
+                <br />
+                <button class="start-btn btn-primary btn-lg" ng-click="vm.start()">Розпочати тестування</button>
+                <br />
+                <br />
             </div>
-            <h4>Правильних відповідей: {{vm.resultVM.correctAnswersNumber}}</h4>
-            <h4>Відсоток правильних відповідей: {{vm.resultVM.percents}}%</h4>
-            <br/>
-            <button class="start-btn btn-primary btn-lg" ng-click="vm.start()">Повторити тестування</button>
+            <div ng-if="vm.state == 'tests'" class="center-field text-center">
+                <div class="question">
+                    <h4>Завдання {{vm.randQuestionsVM.i + 1}}/{{vm.questionsNum}}</h4>
+                    <img ng-src="{{vm.randQuestionsVM.currentQuestion.text}}" style="max-width: 98%" />
+                    <br />
+                </div>
+                <br />
+                <label ng-repeat="variant in vm.randQuestionsVM.currentQuestion.variants">
+                    <input type="radio"
+                           class="radio-inline"
+                           name="vm.randQuestionsVM.i"
+                           ng-model="vm.randQuestionsVM.currentQuestion.answer"
+                           ng-value="variant" />{{variant}}&emsp;
+                </label>
+                <br />
+
+                <button ng-if="vm.randQuestionsVM.i != 0" ng-click="vm.randQuestionsVM.previous()" class="btn-primary btn-sm" style="float: left">Попереднє запитання</button>
+                <button ng-if="vm.randQuestionsVM.i + 1 != vm.questionsNum" ng-click="vm.randQuestionsVM.next()" class="btn-primary btn-sm" style="float: right">Наступне запитання</button>
+                <br />
+                <br />
+                <button ng-if="vm.randQuestionsVM.i + 1 == vm.questionsNum" ng-click="vm.finish()" class="btn-primary btn-lg">Завершити тестування</button>
+            </div>
+            <div ng-if="vm.state == 'result'" class="center-field text-center">
+                <div class="congrats">
+                    <h3>Вітаємо із завершенням тесту, {{vm.resultVM.name}} {{vm.resultVM.secondName}}</h3>
+                </div>
+                <h4>Правильних відповідей: {{vm.resultVM.correctAnswersNumber}}</h4>
+                <h4>Відсоток правильних відповідей: {{vm.resultVM.percents}}%</h4>
+                <br />
+                <button class="start-btn btn-primary btn-lg" ng-click="vm.start()">Повторити тестування</button>
+            </div>
         </div>
     </div>
 </body>
